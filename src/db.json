@@ -1,0 +1,63 @@
+{
+  "menu": [
+    { "id": 1, "name": "home", "link": "www.google.com", "dropdown": [] },
+    { "id": 2, "name": "about", "link": "www.google.com", "dropdown": [] },
+    { "id": 3, "name": "contact", "link": "www.google.com", "dropdown": [] },
+    {
+      "id": 4,
+      "name": "gallery",
+      "link": "www.google.com",
+      "dropdown": [
+        { "id": 1, "name": "gallery-1", "link": "www.google.com" },
+        { "id": 2, "name": "gallery-2", "link": "www.google.com" },
+        { "id": 3, "name": "gallery-3", "link": "www.google.com" }
+      ]
+    }
+  ],
+  "sliders": [
+    {
+      "id": 1,
+      "image": "https://emperial-co.com/images/speaker/1688378273EM-2060.webp",
+      "alt": "2060",
+      "title": "2060",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, reiciendis numquam at mollitia sit nam magnam doloremque optio iusto repudiandae eos sed blanditiis neque. Nisi rem corrupti facilis dolorum quis."
+    },
+    {
+      "id": 2,
+      "image": "https://emperial-co.com/images/speaker/1688378273EM-2060.webp",
+      "alt": "2060",
+      "title": "2060",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, reiciendis numquam at mollitia sit nam magnam doloremque optio iusto repudiandae eos sed blanditiis neque. Nisi rem corrupti facilis dolorum quis."
+    },
+    {
+      "id": 3,
+      "image": "https://emperial-co.com/images/speaker/1688378273EM-2060.webp",
+      "alt": "2060",
+      "title": "2060",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, reiciendis numquam at mollitia sit nam magnam doloremque optio iusto repudiandae eos sed blanditiis neque. Nisi rem corrupti facilis dolorum quis."
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "images": "https://emperial-co.com/images/speaker/1688378273EM-2060.webp",
+      "alt": "2060",
+      "title": "2060",
+      "description": "lorem"
+    },
+    {
+      "id": 2,
+      "images": "https://emperial-co.com/images/speaker/1688378273EM-2060.webp",
+      "alt": "2060",
+      "title": "2060",
+      "description": "lorem"
+    },
+    {
+      "id": 3,
+      "images": "https://emperial-co.com/images/speaker/1688378273EM-2060.webp",
+      "alt": "2060",
+      "title": "2060",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, reiciendis numquam at mollitia sit nam magnam doloremque optio iusto repudiandae eos sed blanditiis neque. Nisi rem corrupti facilis dolorum quis."
+    }
+  ]
+}
