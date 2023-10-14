@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
-
 import { useState } from "react";
 import { addToCart } from "../../Products/CartSlice";
 import { useGetAllProductsQuery } from "../../Products/ProductsApi";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 function Sale() {
   const { data, error, isLoading } = useGetAllProductsQuery();
@@ -39,24 +39,20 @@ function Sale() {
                 </div>
                 <Link to={`/product/${product.id}`}>
                   <div className="image-product">
-                    <img
-                      src={
-                        product.image || (
-                          <Skeleton
-                            count={1}
-                            baseColor="#2b2b2b"
-                            highlightColor="#5b5b5b"
-                          />
-                        )
-                      }
+                    <LazyLoadImage
                       alt={product.category}
-                      loading="Layz"
+                      effect="blur"
+                      src={product.image}
                     />
                   </div>
                 </Link>
                 <div className="card mt-3">
                   <div className="card-header">
-                    <a href={handleCardToggle} className="btn" onClick={handleCardToggle}>
+                    <a
+                      href={handleCardToggle}
+                      className="btn"
+                      onClick={handleCardToggle}
+                    >
                       Rating : {product.rating.rate}
                     </a>
                   </div>
