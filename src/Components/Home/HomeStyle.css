@@ -703,7 +703,10 @@ input {
 .footer_terms-link:hover {
   color: #333;
 }
-
+.footer_data svg{
+  color: #2b2b2b;
+  margin-left: 10px;
+}
 /*------------- SCROLL UP -------------*/
 .scrollup {
   position: fixed;
@@ -922,6 +925,7 @@ input {
   }
   .footer_item {
     margin-bottom: 0;
+
   }
   .footer_terms-link {
     font-size: 14px;
