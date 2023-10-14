@@ -56,7 +56,7 @@ function Sale() {
                 </Link>
                 <div className="card mt-3">
                   <div className="card-header">
-                    <a href="www.google.com" className="btn" onClick={handleCardToggle}>
+                    <a href={handleCardToggle} className="btn" onClick={handleCardToggle}>
                       Rating : {product.rating.rate}
                     </a>
                   </div>

@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -6,34 +6,19 @@ import { useNavigate } from 'react-router-dom';
 
 function Create() {
   const [loading, setLoading] = useState(false);
-  const schema = yup.object().shape({
-    title: yup
-      .string()
-      .required('required this filed')
-      .min(1, '5min')
-      .max(10, 'max10'),
-    description: yup
-      .string()
-      .required('required this filed')
-      .min(5, '5min')
-      .max(100, 'max10'),
-    price: yup
-      .string()
-      .required('required this filed')
-      .min(5, '5min')
-      .max(100, 'max10'),
-    category: yup
-      .string()
-      .required('required this filed')
-      .min(5, '5min')
-      .max(100, 'max10'),
-    image: yup
-      .string()
-      .required('required this filed')
-      .min(5, '5min')
-      .max(100, 'max10'),
 
+ 
+  const schema = yup.object().shape({
+    title: yup.string().required('This field is required').min(1, 'Min length is 1').max(10, 'Max length is 10'),
+    description: yup.string().required('This field is required').min(5, 'Min length is 5').max(100, 'Max length is 100'),
+    price: yup.string().required('This field is required').min(5, 'Min length is 5').max(100, 'Max length is 100'),
+    category: yup.string().required('This field is required').min(5, 'Min length is 5').max(100, 'Max length is 100'),
+    image: yup.string().required('This field is required').min(5, 'Min length is 5').max(100, 'Max length is 100'),
+    rating: yup.object().shape({
+      rate: yup.string().required('This field is required'),
+    }),
   });
+
   const {
     register,
     handleSubmit,
@@ -42,50 +27,49 @@ function Create() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const create = async (e) => {
+
+  const create = async (data) => {
     setLoading(true);
     try {
-      const data = await fetch('https://api-storeg-emperial.vercel.app/products', {
+    
+      const id = Date.now();
+      const productData = { ...data, id };
+      
+      const response = await fetch('https://api-storeg-emperial.vercel.app/products', {
         method: 'POST',
-        body: JSON.stringify({
-          id: parseInt(e.id),
-          title: e.title,
-          price: e.price,
-          description: e.description,
-          category: e.category,
-          image: e.image,
-          rating: e.rating,
-        }),
+        body: JSON.stringify(productData),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
       });
-     await data.json();
+      
+      
+      if (response.ok) {
+        
+        reset(); 
+      } else {
+       
+        console.error('Error creating product');
+      }
+      
       setLoading(false);
     } catch (error) {
       setLoading(false);
+      console.error('Error creating product', error);
     }
   };
+
   const handlerEvent = async (data) => {
     await create(data);
-    reset();
   };
+
   const navigate = useNavigate();
+
   return (
-    <div className="container mx-auto mt-3 ">
+    <div className="container mx-auto mt-3">
       <div className="row">
-        <div className="col-6 offset-3  p-3 text-white rounded-4 " style={{ backgroundColor: '#c7ccd0' }}>
+        <div className="col-6 offset-3 p-3 text-white rounded-4" style={{ backgroundColor: '#c7ccd0' }}>
           <form action="Post" onSubmit={handleSubmit(handlerEvent)}>
-            <div className="d-block mb-2">
-              <label htmlFor="ID">ID</label>
-              <input
-                type="number"
-                placeholder="ID"
-                className="form-control"
-                {...register('id')}
-              />
-              <p>{errors.id?.message}</p>
-            </div>
             <div className="d-block mb-2">
               <label htmlFor="title">title</label>
               <input
@@ -104,7 +88,7 @@ function Create() {
                 className="form-control"
                 {...register('price')}
               />
-              <p className="text-warning">{errors.title?.message}</p>
+              <p className="text-warning">{errors.price?.message}</p>
             </div>
             <div className="d-block mb-2">
               <label htmlFor="category">category</label>
@@ -114,7 +98,7 @@ function Create() {
                 className="form-control"
                 {...register('category')}
               />
-              <p className="text-warning">{errors.title?.message}</p>
+              <p className="text-warning">{errors.category?.message}</p>
             </div>
             <div className="d-block mb-2">
               <label htmlFor="image">image</label>
@@ -124,7 +108,7 @@ function Create() {
                 className="form-control"
                 {...register('image')}
               />
-              <p className="text-warning">{errors.title?.message}</p>
+              <p className="text-warning">{errors.image?.message}</p>
             </div>
             <div className="d-block mb-2">
               <label htmlFor="rating">rating</label>
@@ -134,31 +118,29 @@ function Create() {
                 className="form-control"
                 {...register('rating.rate')}
               />
-              <p className="text-warning">{errors.title?.message}</p>
+              <p className="text-warning">{errors['rating.rate']?.message}</p>
             </div>
             <div className="d-block mb-2">
               <label htmlFor="description">description</label>
               <textarea
-                type="text"
                 placeholder="description"
                 className="form-control"
                 style={{ height: '150px', resize: 'none' }}
                 {...register('description')}
               />
-              <p className="text-warning">{errors.body?.message}</p>
-
-              <div className="d-block mb-2">
-                <button
-                  className="btn btn-success text-capitalize mt-4"
-                  disabled=""
-                >
-                    create
-                  {loading && (
-                    <div className="spinner-border spinner-border-sm" />
-                    )}
-                </button>
-                <button onClick={() => navigate('/dashboard')} className="btn btn-info mt-4 mx-2 text-capitalize">comeBack</button>
-              </div>
+              <p className="text-warning">{errors.description?.message}</p>
+            </div>
+            <div className="d-block mb-2">
+              <button
+                className="btn btn-success text-capitalize mt-4"
+                disabled={loading}
+              >
+                Create
+                {loading && (
+                  <div className="spinner-border spinner-border-sm" />
+                )}
+              </button>
+              <button onClick={() => navigate('/dashboard')} className="btn btn-info mt-4 mx-2 text-capitalize">Come Back</button>
             </div>
           </form>
         </div>

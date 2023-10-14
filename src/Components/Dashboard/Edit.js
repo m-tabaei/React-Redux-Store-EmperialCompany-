@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Edit() {
-  const [id, setId] = useState('');
   const [post, setPost] = useState({
     title: '',
     body: '',
@@ -12,46 +11,43 @@ function Edit() {
   const navigate = useNavigate();
 
   useEffect(() => {
-  const fetchPost = async () => {
-    try {
-      if (id) {
-        const data = await fetch(`https://api-storeg-emperial.vercel.app/products/${id}`);
-        const res = await data.json();
-        setPost(res);
-        setError('');
+    const fetchPost = async () => {
+      try {
+        if (post.title) {
+          const data = await fetch(`https://api-storeg-emperial.vercel.app/products?title=${post.title}`);
+          const res = await data.json();
+          if (res.length > 0) {
+            setPost(res[0]);
+            setError('');
+          } else {
+            setError('Post not found.');
+          }
+        }
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
 
     fetchPost();
-  }, [id]);
+  }, [post.title]);
 
   const handleEdit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api-storeg-emperial.vercel.app/products/${id}`,
+        `https://api-storeg-emperial.vercel.app/products/${post.id}`,
         {
           method: 'PUT',
-          body: JSON.stringify({
-            title: post.title,
-            price: post.price,
-            description: post.description,
-            category: post.category,
-            image: post.image,
-            rating: post.rating.rate,
-          }),
+          body: JSON.stringify(post),
           headers: {
             'Content-type': 'application/json; charset=UTF-8',
           },
         },
       );
-     await response.json();
+      await response.json();
       setLoading(false);
       navigate('/dashboard');
     } catch (error) {
@@ -61,24 +57,14 @@ function Edit() {
   };
 
   return (
-    <div className="container mx-auto mt-3 ">
+    <div className="container mx-auto mt-3">
       {error && <h3 className="text-danger">{error}</h3>}
-      <div className="row ">
-        <div className="col-6 offset-3  p-3 text-white rounded-4 " style={{ backgroundColor: '#c7ccd0' }}>
+      <div className="row">
+        <div className="col-6 offset-3 p-3 text-white rounded-4" style={{ backgroundColor: '#c7ccd0' }}>
           <div className="edit-images">
             <img className="edit-image" src={post.image} alt="" />
           </div>
           <form onSubmit={handleEdit}>
-            <div className="d-block mb-2">
-              <label htmlFor="ID">ID</label>
-              <input
-                type="number"
-                placeholder="ID"
-                className="form-control"
-                value={id}
-                onChange={(e) => setId(e.target.value)}
-              />
-            </div>
             <div className="d-block mb-2">
               <label htmlFor="title">Title</label>
               <input
@@ -177,7 +163,6 @@ function Edit() {
               </button>
             </div>
           </form>
-
         </div>
       </div>
     </div>

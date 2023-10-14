@@ -14,32 +14,26 @@ import CartItem from './CartItem';
 import { CartEmpty } from './CartEmpty';
 
 function Cart() {
-  // دریافت وضعیت سبد خرید از store
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // محاسبه مجموع و تعداد محصولات در سبد خرید هر بار که سبد یا تابع dispatch تغییر می‌کند
     dispatch(getTotals());
   }, [cart, dispatch]);
 
   const handleRemoveFromCart = (cartItem) => {
-    // حذف محصول از سبد خرید
     dispatch(removeFromCart(cartItem));
   };
 
   const handleDecreaseCart = (cartItem) => {
-    // کاهش تعداد یک محصول در سبد خرید
     dispatch(decreaseCart(cartItem));
   };
 
   const handleIncreaseCart = (cartItem) => {
-    // افزایش تعداد یک محصول در سبد خرید
     dispatch(addToCart(cartItem));
   };
 
   const handleClearCart = () => {
-    // پاک کردن کل سبد خرید
     dispatch(clearCart());
   };
 
@@ -47,7 +41,6 @@ function Cart() {
     <div className="cart-container">
       <h2>Shopping Cart</h2>
       {cart.cartItems.length === 0 ? (
-        // نمایش پیام در صورتی که سبد خرید خالی باشد
         <div className="cart-empty">
           <CartEmpty />
           <p>Your cart is currently empty</p>
@@ -59,7 +52,6 @@ function Cart() {
           </div>
         </div>
       ) : (
-        // نمایش جزئیات سبد خرید در صورت داشتن محصولات در سبد
         <div>
           <div className="titles">
             <h3 className="product-title">Product</h3>
@@ -69,7 +61,6 @@ function Cart() {
           </div>
           <div className="cart-items">
             {cart.cartItems?.map((cartItem) => (
-              // نمایش هر محصول در سبد خرید به صورت یک کامپوننت جداگانه
               <CartItem
                 key={cartItem.id}
                 cartItem={cartItem}

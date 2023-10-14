@@ -15,7 +15,7 @@ function Menu({ menu }) {
     bg="light"
     variant="light"
     >
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Toggle aria-controls="basic-navbar-nav" style={{marginLeft:"10px"}} />
       
         <Navbar.Brand to="/" style={{paddingLeft:"8px"}}>Emperial online Shop</Navbar.Brand>
       
