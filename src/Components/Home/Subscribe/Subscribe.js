@@ -1,7 +1,7 @@
 function Subscribe() {
   return (
 
-    <section className="subscribe section Contact" id="Contact">
+    <section className="subscribe section Contact container" id="Contact">
       <div className="subscribe_bg">
         <div className="subscribe_container container">
           <h2 className="sectionTitle subscribe_title">
