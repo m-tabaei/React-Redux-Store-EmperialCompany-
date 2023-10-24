@@ -1,25 +1,26 @@
-import {
-  Navigation, A11y,
-} from 'swiper/modules';
-import React, { useEffect, useState, useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
+import { Navigation, A11y } from "swiper/modules";
+import React, { useEffect, useState, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+import { useDarkMode } from "../../DarkMode/DarkModeContext";
 
 function Slider() {
   const [sliderData, setSliderData] = useState([]);
   const swiperRef = useRef(null);
-
+  const { isDarkMode } = useDarkMode();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api-storeg-emperial.vercel.app/sliders');
+        const response = await fetch(
+          "https://api-storeg-emperial.vercel.app/sliders"
+        );
         if (!response.ok) {
-          throw new Error('خطا در دریافت داده‌ها از API');
+          throw new Error("خطا در دریافت داده‌ها از API");
         }
         const data = await response.json();
         setSliderData(data);
       } catch (error) {
-        console.error('Error fetching slider data:', error);
+        console.error("Error fetching slider data:", error);
       }
     };
     fetchData();
@@ -42,16 +43,16 @@ function Slider() {
   }, []);
 
   return (
-    <div className="container">
+    <section className={`homecontainer ${isDarkMode ? 'dark-mode' : ''}`}>
 
+    <div className="container" >
       <Swiper
         ref={swiperRef}
         modules={[Navigation, A11y]}
         spaceBetween={50}
         slidesPerView={1}
         navigation
-        
-        onSlideChange={() => console.log('slide change')}
+        onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
         {sliderData.map((slide) => (
@@ -63,6 +64,7 @@ function Slider() {
         ))}
       </Swiper>
     </div>
+    </section>
   );
 }
 

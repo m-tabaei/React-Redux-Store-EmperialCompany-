@@ -5,6 +5,7 @@ import { addToCart } from "../../Products/CartSlice";
 import { useGetAllProductsQuery } from "../../Products/ProductsApi";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { useDarkMode } from "../DarkMode/DarkModeContext";
 
 function Sale() {
   const { data, error, isLoading } = useGetAllProductsQuery();
@@ -12,6 +13,8 @@ function Sale() {
   const Navigate = useNavigate();
   // State for cart Hover
   const [isCardOpen, setIsCardOpen] = useState(false);
+   const { isDarkMode } = useDarkMode();
+
 
   // On Click for cart Header
   const handleCardToggle = () => {
@@ -23,7 +26,7 @@ function Sale() {
     Navigate("/cart");
   };
   return (
-    <div className="home-container">
+    <div className={`home-container ${isDarkMode ? 'dark-mode' : ''}`}>
       {isLoading ? (
         <p>Loading</p>
       ) : error ? (

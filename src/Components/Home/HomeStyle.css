@@ -229,7 +229,7 @@ input {
   margin-top: 20;
   object-fit: cover;
   object-position: 83%;
-  z-index: -100;
+  z-index: -1;
 }
 
 .mark {
@@ -251,10 +251,12 @@ input {
 
 .homeData {
   padding-top: 120px;
+  z-index: 0;
 }
 
 .homesocial {
   row-gap: 0;
+  z-index: 2;
 }
 
 .homesocial svg {

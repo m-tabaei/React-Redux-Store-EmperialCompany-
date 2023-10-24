@@ -12,10 +12,12 @@ import {
 import CartSummary from './CartSummary';
 import CartItem from './CartItem';
 import { CartEmpty } from './CartEmpty';
+import { useDarkMode } from '../DarkMode/DarkModeContext';
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const { isDarkMode } = useDarkMode();
 
   useEffect(() => {
     dispatch(getTotals());
@@ -38,7 +40,7 @@ function Cart() {
   };
 
   return (
-    <div className="cart-container">
+    <div className="cart-container" className={`footer section ${isDarkMode ? 'dark-mode' : ''}`}>
       <h2>Shopping Cart</h2>
       {cart.cartItems.length === 0 ? (
         <div className="cart-empty">
@@ -52,7 +54,7 @@ function Cart() {
           </div>
         </div>
       ) : (
-        <div>
+        <div >
           <div className="titles">
             <h3 className="product-title">Product</h3>
             <h3 className="price">Price</h3>

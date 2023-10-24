@@ -6,7 +6,7 @@ function MenuItem({ item }) {
   return (
     <>
       {item.dropdown.length ? (
-        <NavDropdown title={item.name} style={{ marginLeft: '45px' }}>
+        <NavDropdown title={item.name} style={{ marginLeft: '45px' }} >
           {item.dropdown.map((elem) => <MenuSubItem subMenu={elem} key={elem.id} />)}
         </NavDropdown>
       ) : (

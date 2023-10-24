@@ -18,10 +18,12 @@ import Dashboard from '../Dashboard/Dashboard';
 import Delete from '../Dashboard/Delete';
 import Edit from '../Dashboard/Edit';
 import Create from '../Dashboard/Create';
+import { DarkModeProvider } from '../DarkMode/DarkModeContext';
 
 function App() {
   return (
     <BrowserRouter>
+    <DarkModeProvider>
       <ToastContainer />
       <Header />
       <Routes>
@@ -37,6 +39,7 @@ function App() {
         <Route path="/dashboard/create" element={<Create />} />
       </Routes>
       <Footer />
+      </DarkModeProvider>
     </BrowserRouter>
   );
 }

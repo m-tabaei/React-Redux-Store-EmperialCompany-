@@ -1,6 +1,9 @@
+import { useDarkMode } from "../../DarkMode/DarkModeContext";
+
 function About() {
+  const { isDarkMode } = useDarkMode();
   return (
-    <section className="about section" id="about">
+    <section className={`about section ${isDarkMode ? 'dark-mode' : ''}`} id="about">
       <div className="aboutContainer container grid">
         <div className="aboutdata">
           <h2 className="sectionTitle about_title">

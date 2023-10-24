@@ -1,7 +1,10 @@
+import { useDarkMode } from "../../DarkMode/DarkModeContext";
+
 function Experince() {
+  const { isDarkMode } = useDarkMode();
   return (
 
-    <section className="experience section">
+    <section className={`experience section ${isDarkMode ? 'dark-mode' : ''}`}>
       <h2 className="sectionTitle">
         Lorem ipsum dolor sit amet consectetur
         {' '}

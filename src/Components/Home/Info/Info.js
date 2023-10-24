@@ -1,8 +1,10 @@
 import { FiArrowRight } from "react-icons/fi";
+import { useDarkMode } from "../../DarkMode/DarkModeContext";
 
 function Info() {
+  const { isDarkMode } = useDarkMode();
   return (
-    <section id="home">
+    <section className={`home ${isDarkMode ? 'dark-mode' : ''}`} id="home">
       <div className="home">
         <div className="homeContainer container grid">
           <div className="homeData">

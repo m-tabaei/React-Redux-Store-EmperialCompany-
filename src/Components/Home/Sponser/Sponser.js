@@ -3,11 +3,13 @@ import image2 from '../../../assets/sponser/sponsors2.png';
 import image3 from '../../../assets/sponser/sponsors3.png';
 import image4 from '../../../assets/sponser/sponsors4.png';
 import image5 from '../../../assets/sponser/sponsors5.png';
+import { useDarkMode } from '../../DarkMode/DarkModeContext';
 
 function Sponser() {
+  const { isDarkMode } = useDarkMode();
   return (
     <main>
-      <section className="sponsor section container">
+      <section className={`sponsor section  ${isDarkMode ? 'dark-mode' : ''}`}>
         <div className="sponsor_container container grid">
           <div className="sponsor_content">
             <img src={image1} alt="" className="sponsor_img" />

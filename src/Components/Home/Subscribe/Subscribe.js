@@ -1,8 +1,11 @@
+import { useDarkMode } from "../../DarkMode/DarkModeContext";
+
 function Subscribe() {
+  const { isDarkMode } = useDarkMode();
   return (
 
-    <section className="subscribe section Contact container" id="Contact">
-      <div className="subscribe_bg">
+    <section  className={`subscribe section Contact  ${isDarkMode ? 'dark-mode' : ''}`} id="Contact">
+      <div  className={`subscribe_bg container ${isDarkMode ? 'dark-mode' : ''}`}>
         <div className="subscribe_container container">
           <h2 className="sectionTitle subscribe_title">
             Subscribe Our

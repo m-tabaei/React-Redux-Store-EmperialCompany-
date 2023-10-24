@@ -4,16 +4,20 @@ import { Link } from 'react-router-dom';
 import { FiShoppingCart, FiUser } from 'react-icons/fi';
 import { Nav, Navbar } from 'react-bootstrap';
 import MenuItem from './MenuItem';
+import { useDarkMode } from '../DarkMode/DarkModeContext';
+
 
 function Menu({ menu }) {
   const { cartTotalQuantity } = useSelector((state) => state.cart);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <Navbar
+    <Navbar 
+    className={isDarkMode ? 'dark-mode' : ''} // اعمال کلاس تاریک
     collapseOnSelect
     expand="md"
-    bg="light"
-    variant="light"
+    bg={isDarkMode ? 'dark' : 'light'} // تنظیم رنگ پس زمینه بر اساس حالت تاریک
+    variant={isDarkMode ? 'dark' : 'light'}
     >
     <Navbar.Toggle aria-controls="basic-navbar-nav" style={{marginLeft:"10px"}} />
       
@@ -21,7 +25,7 @@ function Menu({ menu }) {
       
 
       <Navbar.Collapse id="responsive-navbar-nav">
-
+      <button onClick={toggleDarkMode}> Dark Mode</button>
         <Nav className="m-auto justify-content-between">
           {menu
                 && menu.map((elem) => (
