@@ -13,7 +13,7 @@ function CartSummary({ onClear, cart }) {
           <span>Subtotal</span>
           <span className="amount">
             $
-            {cart.cartTotalAmount}
+            {parseFloat(cart.cartTotalAmount).toFixed(2)}
           </span>
         </div>
         <p>Taxes and Shipping calculated at checkout</p>
