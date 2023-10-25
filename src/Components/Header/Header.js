@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Menu from './Menu';
-import './dark-mode.css'
+import '../DarkMode/dark-mode.css'
 function Header() {
   const [menu, setMenu] = useState(null);
 

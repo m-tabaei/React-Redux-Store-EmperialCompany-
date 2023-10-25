@@ -40,7 +40,9 @@ function Cart() {
   };
 
   return (
-    <div className="cart-container" className={`footer section ${isDarkMode ? 'dark-mode' : ''}`}>
+    <section className={` ${isDarkMode ? 'dark-mode' : ''}`} >
+
+    <div  className={`cart-container ${isDarkMode ? 'dark-mode' : ''}`}>
       <h2>Shopping Cart</h2>
       {cart.cartItems.length === 0 ? (
         <div className="cart-empty">
@@ -69,13 +71,14 @@ function Cart() {
                 onRemove={handleRemoveFromCart}
                 onDecrease={handleDecreaseCart}
                 onIncrease={handleIncreaseCart}
-              />
-            ))}
+                />
+                ))}
           </div>
           <CartSummary onClear={handleClearCart} cart={cart} />
         </div>
       )}
     </div>
+</section>
   );
 }
 

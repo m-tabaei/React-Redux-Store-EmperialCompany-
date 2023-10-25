@@ -1,0 +1,51 @@
+.dark-mode-toggle {
+  color: blue;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: color 0.3s;
+}
+
+
+.dark-mode-toggle.light {
+  color: blue; 
+}
+
+.dark-mode-toggle.light:hover {
+  color: grey;
+}
+
+
+.dark-mode-toggle.dark {
+  color: white; 
+}
+
+.dark-mode-toggle.dark:hover {
+  color: gold; 
+}
+
+.dark-mode {
+  background-color: #000;
+  color: #fff;
+}
+
+.dark-mode .nav-bag-user,
+.dark-mode .nav-bag {
+  color: #fff; 
+}
+.dark-mode .subscribe_bg {
+  background-color: gray;
+}
+.dark-mode .home-container,
+.dark-mode .title {
+  color: #2b2b2b !important;
+}
+.dark-mode .product {
+  background-color: gray;
+}
+.dark-mode .cart-item,
+.dark-mode .cart-summary{
+background-color: #2b2b2b;
+}

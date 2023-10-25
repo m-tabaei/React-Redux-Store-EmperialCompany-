@@ -30,26 +30,38 @@
 .nav-bar h2 {
   font-size: 40px;
 }
-
+span.navbar-brand{
+  font-size: 26px;
+  font-weight: bold;
+}
 .nav-bag {
   display: flex;
   align-items: center;
-  margin-left: 10px;
+  margin-left: 5px;
   margin-right: 10px;
+  color: #2b2b2b;
 }
+div.nav-bag :hover{
+  color: #007bff;
+}
+
 .nav-bag-user {
   display: flex;
   align-items: center;
   margin-left: 10px;
   margin-right: 10px;
+  color: #2b2b2b;
+}
+.nav-bag-user :hover{
+  color: #007bff;
 }
 .bag-quantity {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 35px;
-  width: 35px;
-  background-color: blue;
+  height: 30px;
+  width: 30px;
+  background-color: #2b2b2b;
   border-radius: 50%;
   font-size: 24px;
   font-weight: bold;
@@ -71,7 +83,6 @@
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 2rem;
-  margin: 10px;
 }
 
 .product {
@@ -116,8 +127,7 @@
 .product .details {
   display: flex;
   margin-top: 1rem;
-  /* align-items: center; */
-  /* دیگر ویژگی‌ها و استایل‌های مورد نظر خود را اینجا اضافه کنید */
+ 
 }
 .product .details .price {
   text-align: center;
@@ -129,7 +139,7 @@
   color: white;
 }
 
-/* استایل‌دهی به دکمه "Add to Cart" در هر محصول */
+
 .product button {
   background-color: #007bff; /* رنگ پس زمینه دکمه */
   color: #fff; /* رنگ متن دکمه */
@@ -151,7 +161,6 @@
 
 .cart-container {
   padding: 2rem 4rem;
-  background-color: #2b2b2b;
 }
 .cart-container h2 {
   font-weight: 400;
@@ -668,21 +677,21 @@ border: none;
 /* Media Query برای بازه‌ی زیر 546px */
 @media (max-width: 546px) {
   .cart-item {
-    display: flex; /* تغییر نمایش به حالت بلاک (افقی به عمودی) */
-    text-align: center; /* متن و محتوا در وسط قرار بگیرد */
+    display: flex;
+    text-align: center; 
   }
 
   .cart-product {
-    flex-direction: column; /* تغییر جهت به عمودی (بازگشت به حالت عمودی) */
-    align-items: center; /* محتوا در وسط قرار بگیرد */
+    flex-direction: column; 
+    align-items: center; 
   }
 
   .cart-product p {
-    display: none; /* مخفی کردن پاراگراف‌های داخل .cart-product */
+    display: none;
   }
 
   .cart-container {
-    padding: 2rem 2rem; /* تغییر پدینگ در بازه‌ی کوچکتر */
+    padding: 2rem 2rem; 
   }
 
   .cart-container h2 {
@@ -695,20 +704,20 @@ border: none;
     margin: 2rem 2rem 0rem 0;
   }
   .cart-container .titles h3 {
-    display: none; /* مخفی کردن عناوین در بازه‌ی کوچکتر */
+    display: none; 
   }
 
   .cart-item,
   .cart-container .titles {
-    display: flex; /* بازگشت به نمایش فلکسی در بازه‌ی کوچکتر */
-    flex-flow: wrap; /* اضافه کردن wrap به flex-flow */
+    display: flex !;
+    flex-flow: wrap; 
     justify-content: space-between;
     align-items: center;
     padding: 20px;
   }
 
   .cart-product button {
-    margin-top: 10px; /* افزایش فاصله بالایی دکمه */
+    margin-top: 10px; 
   }
   .cart-item .cart-product img {
     width: 100px;
@@ -716,13 +725,13 @@ border: none;
     padding: 10px;
   }
   .cart-product-quantity {
-    width: 80px; /* عرض به 100% تغییر می‌کند */
-    margin-top: 10px; /* افزایش فاصله بالایی */
-    flex-direction: row; /* بازگشت به حالت افقی */
+    width: 80px;
+    margin-top: 10px; 
+    flex-direction: row;
   }
 
   .cart-product-quantity button {
-    padding: 0.5rem 1rem; /* تغییر اندازه دکمه‌ها */
+    padding: 0.5rem 1rem; 
   }
 
 
@@ -741,6 +750,14 @@ border: none;
     justify-content: space-between;
     width: 50%;
   }
+  span.navbar-brand{
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .nav-bag svg{
+    width: 28px;
+    
+  }
   .nav-bag-user {
     display: none;
   }
@@ -749,7 +766,7 @@ border: none;
   } */
 }
 
-/* مثالی از قوانین استایل برای ul و li */
+
 .menu-list {
   list-style-type: none;
   margin: 0;
@@ -772,7 +789,9 @@ border: none;
 .menu-list li a:hover {
   background-color: gray;
 }
-
+.nav-item {
+  font-size: 22px;
+}
 .nav-item a:hover {
   color: #c7c4c4;
   font-weight: bolder;

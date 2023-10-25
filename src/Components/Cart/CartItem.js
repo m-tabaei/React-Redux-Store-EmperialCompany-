@@ -23,7 +23,7 @@ function CartItem({
       </div>
       <div className="cart-product-total-price">
         $
-        {cartItem.price * cartItem.cartQuantity}
+        {parseFloat(cartItem.price * cartItem.cartQuantity).toFixed(2)}
       </div>
     </div>
   );
