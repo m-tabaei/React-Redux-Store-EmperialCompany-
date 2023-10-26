@@ -1,13 +1,13 @@
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation, Pagination, A11y } from "swiper/modules";
 import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
+import { useDarkMode } from "../../DarkMode/DarkModeContext";
 
-
-const Slider = () => {
+function Slider() {
   const [sliderData, setSliderData] = useState([]);
   const swiperRef = useRef(null);
-
+  const { isDarkMode } = useDarkMode();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -15,7 +15,7 @@ const Slider = () => {
           "https://api-storeg-emperial.vercel.app/sliders"
         );
         if (!response.ok) {
-          throw new Error("خطا در دریافت داده‌ها از API");
+          throw new Error("Error.message");
         }
         const data = await response.json();
         setSliderData(data);
@@ -43,28 +43,29 @@ const Slider = () => {
   }, []);
 
   return (
-    <div className="container">
-      <Swiper
-        ref={swiperRef}
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={50}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-      >
-        {sliderData.map((slide) => (
-          <SwiperSlide key={slide.id}>
-            <img src={slide.image} alt={slide.alt} />
-            <h3>{slide.title}</h3>
-            <p>{slide.description}</p>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    <section className={`homecontainer ${isDarkMode ? "dark-mode" : ""}`}>
+      <div className="container">
+        <Swiper
+          ref={swiperRef}
+          modules={[Navigation, A11y, Pagination]}
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+        >
+          {sliderData.map((slide) => (
+            <SwiperSlide key={slide.id}>
+              <img src={slide.image} alt={slide.alt} />
+              <h3>{slide.title}</h3>
+              <p>{slide.description}</p>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </section>
   );
-};
+}
 
 export default Slider;
