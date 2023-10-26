@@ -1,13 +1,13 @@
-import { Navigation, A11y } from "swiper/modules";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
-import { useDarkMode } from "../../DarkMode/DarkModeContext";
 
-function Slider() {
+
+const Slider = () => {
   const [sliderData, setSliderData] = useState([]);
   const swiperRef = useRef(null);
-  const { isDarkMode } = useDarkMode();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,15 +43,15 @@ function Slider() {
   }, []);
 
   return (
-    <section className={`homecontainer ${isDarkMode ? 'dark-mode' : ''}`}>
-
-    <div className="container" >
+    <div className="container">
       <Swiper
         ref={swiperRef}
-        modules={[Navigation, A11y]}
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
         slidesPerView={1}
         navigation
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
@@ -64,8 +64,7 @@ function Slider() {
         ))}
       </Swiper>
     </div>
-    </section>
   );
-}
+};
 
 export default Slider;

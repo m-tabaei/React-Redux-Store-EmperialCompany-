@@ -42,7 +42,8 @@
 .dark-mode .title {
   color: #2b2b2b !important;
 }
-.dark-mode .product {
+.dark-mode .product,
+.dark-mode .product-details {
   background-color: gray;
 }
 .dark-mode .cart-item,
