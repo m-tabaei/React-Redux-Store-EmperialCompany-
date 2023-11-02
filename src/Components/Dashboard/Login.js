@@ -30,9 +30,7 @@ function Login() {
               USER : admin --- PASS: admin
             </Form.Text>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Username or Email address </Form.Label>
-    <Form.Text className="text-muted">
-This panel for test ,you can use General <br> Username: admin && passWord: admin to login            </Form.Text>
+            <Form.Label>Username or Email address</Form.Label>
             <Form.Control
               type="email"
               placeholder="Enter email"
