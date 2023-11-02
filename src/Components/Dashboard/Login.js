@@ -29,7 +29,7 @@ function Login() {
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Username or Email address </Form.Label>
     <Form.Text className="text-muted">
-This panel for text ,you can use General Username: admin && passWord: admin to login            </Form.Text>
+This panel for test ,you can use General <br> Username: admin && passWord: admin to login            </Form.Text>
             <Form.Control
               type="email"
               placeholder="Enter email"
