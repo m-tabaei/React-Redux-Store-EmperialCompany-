@@ -27,9 +27,9 @@ function Login() {
       <div className="login  ">
         <Form className="login-form">
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Username or Email address </br>
-This panel for text ,you can use General Username: admin && passWord: admin to login
-</Form.Label>
+            <Form.Label>Username or Email address </Form.Label>
+    <Form.Text className="text-muted">
+This panel for text ,you can use General Username: admin && passWord: admin to login            </Form.Text>
             <Form.Control
               type="email"
               placeholder="Enter email"
