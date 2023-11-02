@@ -10,7 +10,7 @@ function Login() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const handleLogin = () => {
-    if (username === 'admin' && password === '123456') {
+    if (username === 'admin' && password === 'admin') {
       setLoggedIn(true);
       navigate('/dashboard');
     }
@@ -26,6 +26,9 @@ function Login() {
     return (
       <div className="login  ">
         <Form className="login-form">
+          <Form.Text className="text-muted">
+              USER : admin --- PASS: admin
+            </Form.Text>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Username or Email address</Form.Label>
             <Form.Control
